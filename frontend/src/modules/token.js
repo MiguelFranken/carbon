@@ -28,7 +28,7 @@ export default function useToken() {
   }
 
   function getImageSrc(token) {
-    return `https://storage.googleapis.com/crypto-cocks/svgs/${token.length}/${token.id}/cock.svg`;
+    return `/diamonds/${token.length}.png`;
   }
 
   const imageIdentifiers = [
@@ -86,7 +86,7 @@ export default function useToken() {
       : null;
   });
 
-  const ipfsCockImageHttp = computed(() => {
+  const ipfsDiamondImageHttp = computed(() => {
     if (state.isLoading) {
       return null;
     }
@@ -103,7 +103,7 @@ export default function useToken() {
     getTokenCount,
     getImageSrc,
     ipfsMetadataHttp,
-    ipfsCockImageHttp,
+    ipfsDiamondImageHttp,
     openseaLink,
   };
 }

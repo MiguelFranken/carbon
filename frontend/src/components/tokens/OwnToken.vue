@@ -6,22 +6,22 @@
           class="text-3xl font-extrabold tracking-tight sm:text-4xl uppercase"
           style="color: #701fe8"
         >
-          YOUR COCKS
+          YOUR DIAMONDS
         </h2>
         <div class="text-gray-300 pt-4">
           <div>
             In total, {{ getTokens.length }}
-            {{ getTokens.length > 1 ? "CryptoCocks" : "CryptoCock" }} could be
-            found in your wallet.
+            {{ getTokens.length > 1 ? "diamonds" : "diamond" }} could be found
+            in your wallet.
           </div>
           <div class="pt-4">
             <router-link
               v-for="token in getTokens"
               :key="token.id"
-              :to="'/cocks/' + token.id"
+              :to="'/diamonds/' + token.id"
               class="text-sm font-medium nes-btn crypto-button-border-gray nes-pointer mb-4 mr-4"
             >
-              CryptoCock #{{ token.id }} ({{ getCockLength(token) }}%)
+              Diamond #{{ token.id }} ({{ getDiamondSize(token) }}%)
             </router-link>
           </div>
         </div>
@@ -39,7 +39,7 @@ export default {
   },
 
   methods: {
-    getCockLength(token) {
+    getDiamondSize(token) {
       if (token.length === 11) {
         return "100";
       }

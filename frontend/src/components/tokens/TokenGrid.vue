@@ -8,7 +8,7 @@
         GALLERY
       </h2>
       <div class="text-gray-300 pt-4">
-        <div>All minted CryptoCocks.</div>
+        <div>All minted diamonds.</div>
       </div>
     </div>
     <ul
@@ -18,13 +18,13 @@
     >
       <li v-for="token in tokensData.tokens" :key="token.id" class="relative">
         <div
-          class="group block w-full aspect-w-10 aspect-h-5 rounded-md bg-gray-100 overflow-hidden transition transform hover:scale-105"
+          class="group block w-full rounded-md overflow-hidden transition transform hover:scale-105"
           @click="showToken(token)"
         >
           <img
             :src="getImageSrc(token)"
             alt=""
-            class="object-cover pointer-events-none group-hover:opacity-75"
+            class="object-cover pointer-events-none"
           />
           <button
             type="button"
@@ -60,7 +60,7 @@
       </li>
     </ul>
     <div v-if="tokensData.isLoading" class="text-gray-300 pt-4">
-      Loading CryptoCocks...
+      Loading diamonds...
     </div>
   </div>
 </template>

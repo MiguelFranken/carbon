@@ -3,7 +3,7 @@
     <source :srcset="`${src}.webp`" type="image/webp" />
     <img
       :src="src"
-      :alt="`CryptoCocks | ${alt}`"
+      :alt="`Carbon | ${alt}`"
       :class="imgClass"
       :style="imgStyle"
       :loading="imgLoading"

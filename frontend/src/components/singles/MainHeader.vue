@@ -13,10 +13,11 @@
           class="text-sm font-medium nes-btn"
           :class="{
             'crypto-button-border-gray': routeName !== 'home',
-            'cock-button crypto-button-border-blue': routeName === 'cocks',
+            'diamond-button crypto-button-border-blue':
+              routeName === 'diamonds',
             'is-disabled pointer-events-none': !isGalleryEnabled,
           }"
-          to="/cocks"
+          to="/diamonds"
         >
           Gallery
         </router-link>
@@ -25,23 +26,12 @@
           class="text-sm font-medium nes-btn"
           :class="{
             'crypto-button-border-gray': routeName !== 'home',
-            'cock-button crypto-button-border-blue': routeName === 'mint',
+            'diamond-button crypto-button-border-blue': routeName === 'mint',
             'is-disabled pointer-events-none': !isMintingEnabled,
           }"
           to="/mint"
         >
           Mint
-        </router-link>
-
-        <router-link
-          class="text-sm font-medium nes-btn"
-          to="/faq"
-          :class="{
-            'crypto-button-border-gray': routeName !== 'home',
-            'cock-button crypto-button-border-blue': routeName === 'faq',
-          }"
-        >
-          FAQ
         </router-link>
       </PopoverGroup>
 
@@ -62,16 +52,15 @@
         }"
       >
         <router-link to="/">
-          <span class="sr-only">CryptoCocks</span>
-          <CryptoImage imgClass="h-20 w-auto" src="/logo.png" alt="Logo" />
+          <span class="text-white text-3xl text-center font-bold">Carbon</span>
         </router-link>
       </div>
 
       <!-- Right Side -->
-      <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+      <div class="hidden md:flex items-center">
         <button
           v-if="!isUserConnected"
-          class="whitespace-nowrap text-sm font-medium nes-btn pixelated cock-button"
+          class="whitespace-nowrap text-sm font-medium nes-btn pixelated diamond-button"
           :class="{
             'crypto-button-border-blue': routeName !== 'home',
           }"
@@ -81,7 +70,7 @@
         </button>
         <button
           v-else
-          class="whitespace-nowrap text-sm font-medium nes-btn pixelated cock-button"
+          class="whitespace-nowrap text-sm font-medium nes-btn pixelated diamond-button"
           @click="disconnectWeb3Modal"
         >
           Disconnect {{ getActiveAccount.substring(0, 7) }}...
@@ -128,7 +117,7 @@
                     class="flex items-center rounded-lg hover:bg-gray-50 px-4"
                   >
                     <button
-                      class="text-base font-medium text-gray-900 nes-btn cock-button w-full p-6"
+                      class="text-base font-medium text-gray-900 nes-btn diamond-button w-full p-6"
                     >
                       {{ item.name }}
                     </button>
@@ -152,10 +141,9 @@ import {
   PopoverPanel,
   PopoverOverlay,
 } from "@headlessui/vue";
-import { AnnotationIcon, InboxIcon, MenuIcon } from "@heroicons/vue/outline";
+import { InboxIcon, MenuIcon } from "@heroicons/vue/outline";
 import { useRoute } from "vue-router";
 import { mapActions, mapGetters } from "vuex";
-import CryptoImage from "@/components/globals/CryptoImage";
 
 const overlayMenuItems = [
   {
@@ -170,16 +158,9 @@ const overlayMenuItems = [
     name: "Gallery",
     description:
       "Get a better understanding of where your traffic is coming from.",
-    href: "/cocks",
+    href: "/diamonds",
     show: true,
     icon: InboxIcon,
-  },
-  {
-    name: "FAQ",
-    description: "Speak directly to your customers in a more meaningful way.",
-    href: "/faq",
-    show: true,
-    icon: AnnotationIcon,
   },
 ];
 
@@ -191,7 +172,6 @@ export default {
     PopoverOverlay,
     PopoverPanel,
     MenuIcon,
-    CryptoImage,
   },
 
   computed: {

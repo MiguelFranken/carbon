@@ -13,7 +13,7 @@
               class="text-3xl font-extrabold tracking-tight sm:text-4xl uppercase"
               style="color: #701fe8"
             >
-              How long will yours be?
+              How large will your diamond be?
             </h2>
             <div class="mt-6 text-gray-300 space-y-6">
               <p class="text-lg">
@@ -31,15 +31,15 @@
                 >.
               </p>
               <p class="text-lg">
-                Percentages [0,10) are mapped to cock length 1, [10,20) to cock
-                length 2, ..., [90,100) to cock length 10.
+                Percentages [0,10) are mapped to diamond size 1, [10,20) to
+                diamond size 2, ..., [90,100) to diamond size 10.
               </p>
               <p class="text-lg">
                 Only the
                 <span class="highlighted"
                   >largest balance at the time of minting</span
                 >
-                will receive a special length, namely 11.
+                will receive a special NFT.
               </p>
             </div>
           </div>
@@ -49,7 +49,7 @@
           <div
             class="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0 lg:max-w-none lg:pb-20"
           >
-            <CockPreview class="relative" />
+            <DiamondPreview class="relative" />
           </div>
         </div>
       </div>
@@ -58,11 +58,11 @@
 </template>
 
 <script>
-import CockPreview from "./CockPreview";
+import DiamondPreview from "./DiamondPreview";
 import CryptoContainer from "@/components/globals/CryptoContainer";
 export default {
   name: "AssignmentSection",
 
-  components: { CryptoContainer, CockPreview },
+  components: { CryptoContainer, DiamondPreview },
 };
 </script>

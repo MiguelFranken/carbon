@@ -4,7 +4,7 @@
       class="text-sm font-medium nes-btn crypto-button-border-gray nes-pointer group flex space-x-2 items-center"
       @click="openModal"
       :class="{
-        'cock-button crypto-button-border-blue': open,
+        'diamond-button crypto-button-border-blue': open,
       }"
     >
       <span class="block truncate">{{ placeholder }}</span>
@@ -132,7 +132,7 @@
                       <div class="flex-shrink-0 flex justify-center">
                         <button
                           type="button"
-                          class="text-sm font-medium nes-btn cock-button mt-5"
+                          class="text-sm font-medium nes-btn diamond-button mt-5"
                           @click="closeModal"
                         >
                           Apply

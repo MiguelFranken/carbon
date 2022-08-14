@@ -2,26 +2,26 @@
   box-shadow: none !important;
 }
 
-.cock-button {
+.diamond-button {
   background-color: #701fe8 !important;
   @apply text-gray-300;
 }
 
 
-.cock-button::after {
+.diamond-button::after {
   box-shadow: #9056e2 -4px -4px 0px 0px inset;
 }
 
-.cock-button:hover {
+.diamond-button:hover {
   background-color: #601fc1 !important;
   @apply text-gray-300;
 }
 
-.cock-button:hover::after {
+.diamond-button:hover::after {
   box-shadow: inset -6px -6px #8448dc;
 }
 
-.cock-button:active:not(.is-disabled)::after {
+.diamond-button:active:not(.is-disabled)::after {
   box-shadow: inset 4px 4px #7c40d4;
 }
 

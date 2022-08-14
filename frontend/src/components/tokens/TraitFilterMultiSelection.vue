@@ -7,7 +7,7 @@
           :key="option.id"
           class="nes-btn pixelated relative flex items-center p-2 focus:outline-none nes-pointer whitespace-nowrap font-medium"
           :class="{
-            'cock-button hover:!bg-opacity-80':
+            'diamond-button hover:!bg-opacity-80':
               modelValue && modelValue.includes(option.value),
           }"
           @click="selectOption(option.value)"

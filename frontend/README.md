@@ -1,4 +1,4 @@
-# CryptoCocks Frontend
+# Carbon Frontend
  
 ## Project setup
 ```

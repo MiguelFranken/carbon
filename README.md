@@ -1,11 +1,3 @@
-<p align="center">
-  <img src="https://github.com/cocodigrande2021/cc/raw/master/logo.png" width="320" alt="CryptoCocks Logo" />
-</p>
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/122bdf1c-4e53-4724-8e44-9a792056f779/deploy-status)](https://app.netlify.com/sites/sharp-ride-f2668a/deploys)
-[![build-api](https://github.com/cocodigrande2021/cc/actions/workflows/build-api.yml/badge.svg?branch=master)](https://github.com/cocodigrande2021/cc/actions/workflows/build-api.yml)
-[![build-api-staging](https://github.com/cocodigrande2021/cc/actions/workflows/build-api-staging.yml/badge.svg?branch=staging)](https://github.com/cocodigrande2021/cc/actions/workflows/build-api-staging.yml)
-
 ## Requirements
 - Node 12
   - Use [NVM](https://github.com/nvm-sh/nvm) or [NVM-Windows](https://github.com/coreybutler/nvm-windows) to manage NodeJS versions on your machine
@@ -37,7 +29,7 @@
   - [HeroIcons](https://github.com/tailwindlabs/heroicons#vue)
   - [Web3 v1](https://github.com/ChainSafe/web3.js)
   - [Vuex v4](https://next.vuex.vuejs.org)
-- Ethereum development environment [Truffle](https://www.trufflesuite.com/truffle) (JavaScript)
-  - [Ganache](https://www.trufflesuite.com/ganache) for local blockchain deployment
+- Ethereum development environment
+  - [Hardhat](https://hardhat.org/) for local blockchain deployment
   - [Alchemy](https://www.alchemy.com) for deployment to test networks
   

@@ -6,14 +6,14 @@
       imgLoading="eager"
       alt="Banner"
     />
-    <div class="absolute inset-0 flex items-center justify-center">
+    <!--    <div class="absolute inset-0 flex items-center justify-center">
       <CryptoImage
         src="/landing/logo.png"
         alt="Logo"
         imgClass="px-4 w-full lg:w-1/2"
         imgLoading="eager"
       />
-    </div>
+    </div>-->
 
     <!--    <div
       class="hidden lg:flex absolute w-full flex items-center justify-center"

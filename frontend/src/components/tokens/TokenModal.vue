@@ -39,7 +39,7 @@
           leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         >
           <div
-            class="inline-block align-bottom rounded-lg p-0 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full"
+            class="inline-block align-bottom rounded-lg p-0 text-left overflow-hidden transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full"
           >
             <!--            <div class="sm:flex sm:items-start">-->
             <div>
@@ -49,7 +49,7 @@
                     as="h3"
                     class="text-3xl leading-6 font-medium inline-block mt-2 text-gray-400"
                   >
-                    CryptoCock {{ token.id }}
+                    Diamond {{ token.id }}
                   </DialogTitle>
                 </div>
 
@@ -67,7 +67,7 @@
             <div class="mt-5 flex justify-center">
               <button
                 type="button"
-                class="text-sm font-medium nes-btn cock-button"
+                class="text-sm font-medium nes-btn diamond-button"
                 @click="openDetails"
               >
                 See Details
@@ -106,7 +106,7 @@ export default {
 
   methods: {
     openDetails() {
-      this.$router.push(`/cocks/${this.token.id}`);
+      this.$router.push(`/diamonds/${this.token.id}`);
     },
   },
 

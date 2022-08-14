@@ -75,24 +75,24 @@
                     v-if="status === 'confirming'"
                   >
                     Now please confirm the transaction in your MetaWallet to
-                    mint your Cock
+                    mint your diamond
                   </p>
                   <p
                     class="text-sm text-gray-500"
                     v-if="status === 'confirmed'"
                   >
-                    Your cock is currently being minted on the Ethereum
+                    Your diamond is currently being minted on the Ethereum
                     blockchain. This may take a few seconds or minutes. We will
                     show you a notification as soon as the minting is complete.
                   </p>
                   <p class="text-sm text-gray-500" v-if="status === 'minted'">
-                    Your cock has been successfully minted on the Ethereum
+                    Your diamond has been successfully minted on the Ethereum
                     blockchain.
                   </p>
                   <button
                     v-if="status !== 'minted'"
                     type="button"
-                    class="whitespace-nowrap text-sm font-medium nes-btn pixelated cock-button w-full mt-6"
+                    class="whitespace-nowrap text-sm font-medium nes-btn pixelated diamond-button w-full mt-6"
                     @click="open = false"
                   >
                     Close
@@ -101,13 +101,16 @@
               </div>
             </div>
             <div class="mt-5 sm:mt-6">
-              <router-link :to="'/cocks/' + token" v-if="status === 'minted'">
+              <router-link
+                :to="'/diamonds/' + token"
+                v-if="status === 'minted'"
+              >
                 <button
                   type="button"
-                  class="whitespace-nowrap text-sm font-medium nes-btn pixelated cock-button w-full mt-6"
+                  class="whitespace-nowrap text-sm font-medium nes-btn pixelated diamond-button w-full mt-6"
                   @click="open = false"
                 >
-                  Go to your minted cock
+                  Go to your minted diamond
                 </button>
               </router-link>
             </div>

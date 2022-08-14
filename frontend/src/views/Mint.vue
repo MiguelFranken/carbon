@@ -4,11 +4,11 @@
       <div class="space-y-10 col-span-6">
         <CryptoSectionLeft
           title="MINTING"
-          subtitle="10,000 juicy cocks – and you can get one of them!"
+          subtitle="10,000 diamonds – and you can get one of them!"
         >
           <p class="text-lg text-gray-300">
-            Mint your CryptoCock before everyone else and become part of our
-            incredible CryptoCocks community.
+            Mint your Carbon NFT before everyone else and become part of our
+            incredible Carbon community.
           </p>
         </CryptoSectionLeft>
         <div class="text-md">
@@ -16,22 +16,22 @@
             <ul class="nes-list is-circle mint-list pl-4 space-y-4">
               <SlideFadeRightContainer :delay="0.1">
                 <li class="highlighted">
-                  <span class="mint-list-text">10 different cock lengths</span>
+                  <span class="mint-list-text">10 different diamond sizes</span>
                 </li>
               </SlideFadeRightContainer>
               <SlideFadeRightContainer :delay="0.2">
                 <li class="highlighted">
                   <span class="mint-list-text"
-                    >Cock length depends on your wallet balance</span
+                    >Diamond size depends on your wallet balance</span
                   >
                 </li>
               </SlideFadeRightContainer>
               <SlideFadeRightContainer :delay="0.3">
                 <li class="highlighted">
                   <span class="mint-list-text"
-                    >Cocks of minters with the largest balance at the time of
+                    >Diamonds of minters with the largest balance at the time of
                     minting will always receive a special property, namely
-                    <i>'All Time High'</i>. These Cocks are edged with a
+                    <i>'All Time High'</i>. These diamonds are edged with a
                     rainbow!</span
                   >
                 </li>
@@ -81,9 +81,6 @@
           {{ mintButtonText }}
         </button>
       </div>
-      <div class="col-span-4">
-        <MintImages />
-      </div>
     </div>
 
     <teleport to="body">
@@ -92,7 +89,6 @@
   </div>
 </template>
 <script>
-import MintImages from "@/views/MintImages";
 import MintModal from "@/components/mint/MintModal";
 import { mapGetters } from "vuex";
 import SlideFadeRightContainer from "@/components/singles/SlideFadeRightContainer";
@@ -102,7 +98,6 @@ export default {
   components: {
     SlideFadeRightContainer,
     MintModal,
-    MintImages,
     CryptoSectionLeft,
   },
 
@@ -161,13 +156,13 @@ export default {
           .then((receipt) => {
             this.mintedTokenId = receipt.events.Transfer.returnValues.tokenId;
             console.log(
-              "Successfully minted cock",
+              "Successfully minted diamond",
               receipt,
               this.mintedTokenId
             );
             this.status = "minted";
             this.$notifications.success(
-              "The minting of your cock is now complete!"
+              "The minting of your diamond is now complete!"
             );
           })
           .catch((error) => {

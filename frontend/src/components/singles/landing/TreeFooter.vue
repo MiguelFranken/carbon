@@ -2,12 +2,12 @@
   <div>
     <div class="relative mx-auto px-4 pb-20">
       <CryptoSectionCentered
-        title="dicks out for the rainforest"
+        title="diamonds for the rainforest"
         subtitle='30% of all primary market sales will be donated to "Trees for the
       Future"'
       >
-        Storing and verifying your cock size on-chain consumes a lot of energy,
-        therefore 30% of all primary market sales will be donated to the
+        Storing and verifying your diamond size on-chain consumes a lot of
+        energy, therefore 30% of all primary market sales will be donated to the
         <a
           class="underline text-blueish italic"
           href="https://trees.org/"

@@ -8,7 +8,9 @@
         FILTER
       </h2>
       <div class="text-gray-300 pt-4">
-        <div>Filter the CockGallery to find your absolute favorite Cock.</div>
+        <div>
+          Filter the DiamondGallery to find your absolute favorite diamond.
+        </div>
       </div>
     </div>
     <div class="md:hidden">

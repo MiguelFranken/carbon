@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col">
-    <div class="mb-8">
+    <div>
       <div class="flex flex-col">
         <img :src="src" alt="Preview" class="rounded-md" />
       </div>
@@ -40,13 +40,6 @@
           </button>
         </div>
       </div>
-      <button
-        ontouchstart=""
-        class="text-sm font-medium nes-btn mt-8"
-        @click="generate"
-      >
-        Generate CryptoCock
-      </button>
     </div>
   </div>
 </template>
@@ -56,13 +49,13 @@ import useToken from "@/modules/token";
 const { getImageSrc } = useToken();
 
 export default {
-  name: "CockPreview",
+  name: "DiamondPreview",
 
   data() {
     return {
       size: 5,
       savedSize: 5,
-      currentCock: this.getRandomTokenId(),
+      currentDiamond: this.getRandomTokenId(),
     };
   },
 
@@ -70,7 +63,7 @@ export default {
     src() {
       return getImageSrc({
         length: this.savedSize,
-        id: this.currentCock,
+        id: this.currentDiamond,
       });
     },
   },
@@ -88,7 +81,7 @@ export default {
 
     generate() {
       this.savedSize = this.size;
-      this.currentCock = this.getRandomTokenId();
+      this.currentDiamond = this.getRandomTokenId();
     },
 
     getRandomTokenId() {

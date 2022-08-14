@@ -21,7 +21,7 @@
                   <li class="highlighted">
                     <span class="mint-list-text"
                       >Decentralized generative art project living on Ethereum
-                      Mainnet</span
+                      Rinkeby testnet (for now)</span
                     >
                   </li>
                 </SlideFadeRightContainer>
@@ -36,9 +36,9 @@
                   <li class="highlighted">
                     <span class="mint-list-text"
                       ><span class="highlighted"
-                        >10 different cock lengths</span
+                        >10 different diamond sizes</span
                       >
-                      and special cocks for minters having the largest wallet
+                      and special dimaonds for minters having the largest wallet
                       balance at the time of minting</span
                     >
                   </li>
@@ -46,7 +46,7 @@
                 <SlideFadeRightContainer>
                   <li class="highlighted">
                     <span class="mint-list-text"
-                      >Cock length is determined
+                      >Diamond size is determined
                       <span class="highlighted"
                         >how someone's wallet balance at the time of minting
                         compares with the wallet balance of previous
@@ -70,7 +70,7 @@
                       >Images and metadata stored on
                       <a
                         class="underline text-blueish italic"
-                        href="https://github.com/cryptococks-xyz/cryptococks-contract#ipfs"
+                        href="https://github.com/miguelfranken/carbon-contract#ipfs"
                         >IPFS</a
                       >
                       and
@@ -82,9 +82,7 @@
                   <li class="highlighted">
                     <span class="mint-list-text"
                       >Collection on
-                      <a
-                        class="underline text-blueish italic"
-                        href="https://opensea.io/collection/cryptococks-xyz"
+                      <a class="underline text-blueish italic" href="#"
                         >OpenSea</a
                       >
                     </span>
@@ -107,7 +105,7 @@
                       and
                       <a
                         class="underline text-blueish italic"
-                        href="https://github.com/cryptococks-xyz/cryptococks-contract"
+                        href="https://github.com/miguelfranken/carbon-contract"
                       >
                         GitHub</a
                       >.
@@ -128,8 +126,8 @@
             >
               BALANCE NEEDED
             </h2>
-            <div class="text-gray-300 pt-4">
-              When minting, your cock would currently have its length according
+            <div class="text-gray-300 pt-6">
+              When minting, your diamond would currently have its size according
               to these balance intervals.
             </div>
             <LeaderboardTable />
