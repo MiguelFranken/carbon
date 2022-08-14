@@ -12,7 +12,7 @@
     "deploy": "cd truffle && npm run migrate && cd ../api && npm run typings",
     "deploy:ropsten": "cd truffle && npm run migrate:ropsten && cd ../api && npm run typings",
     "lint": "eslint \"{api,frontend,truffle, ipfs}/{src,apps,libs,test,scripts}/**/*.{js,ts}\" --fix",
-    "copy": "npm run copy:mainnet",
+    "copy": "npm run copy:rinkeby",
     "copy:mainnet": "cp -a mainnet/. frontend/src/contracts && cp -a mainnet/. api/src/contracts",
     "copy:rinkeby": "cp -a rinkeby/. frontend/src/contracts && cp -a rinkeby/. api/src/contracts",
     "copy:metadata": "cd ipfs && npm run copy:metadata"
