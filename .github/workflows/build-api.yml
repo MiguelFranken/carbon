@@ -1,0 +1,42 @@
+name: 'build-api'
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - "api/**"
+jobs:
+  build:
+    name: 'Build API image'
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+          token: ${{ secrets.PAT }}
+      - name: "Install IPFS dependencies"
+        run: cd ipfs && npm ci
+      - name: "Copy images and metadata"
+        run: npm run copy:metadata
+      - name: "Copy contracts"
+        run: npm run copy
+      - name: "Generate typings"
+        run: cd api && npm i && npm run typings && cd ..
+      - name: 'Build docker image and push to registry'
+        uses: docker/build-push-action@v1
+        with:
+          path: api/
+          registry: ghcr.io
+          username: "cocodigrande2021"
+          password: ${{ secrets.PAT }}
+          repository: cocodigrande2021/api
+          tags: latest
+      - name: "Ship latest image to cluster"
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.PROD_SERVER_HOST }}
+          username: ${{ secrets.PROD_SERVER_USERNAME }}
+          password: ${{ secrets.PROD_SERVER_PASSWORD }}
+          script: microk8s kubectl delete pod -l tier=api

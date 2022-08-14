@@ -1,0 +1,32 @@
+{
+  "name": "ipfs",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "miguelfranken <miguel.franken@icloud.com>",
+  "homepage": "https://github.com/cocodigrande2021/cc#readme",
+  "license": "ISC",
+  "main": "index.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cocodigrande2021/cc.git"
+  },
+  "scripts": {
+    "upload": "node index.js",
+    "copy:full": "npm run copy:metadata && npm run copy:cocks",
+    "copy:metadata": "node copy-metadata.js",
+    "copy:cocks": "node copy-images.js",
+    "status": "node status.js",
+    "upload:images": "node upload-images-batch.js",
+    "upload:metadata": "node upload-metadata.js"
+  },
+  "bugs": {
+    "url": "https://github.com/cocodigrande2021/cc/issues"
+  },
+  "dependencies": {
+    "buffer-replace": "^1.0.0",
+    "dotenv": "^10.0.0",
+    "nft.storage": "^5.2.2",
+    "ora": "^6.0.1"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "name": "CryptoCocks",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start:dev": "npx --max_old_space_size=4096 vue-cli-service serve",
+    "start:prod": "npx vue-cli-service serve --mode production",
+    "build": "npx vue-cli-service build",
+    "lint": "npx vue-cli-service lint",
+    "lint:fix": "npx vue-cli-service lint --fix"
+  },
+  "dependencies": {
+    "@chenfengyuan/vue-countdown": "^2.0.0-rc",
+    "@headlessui/vue": "^1.1.1",
+    "@heroicons/vue": "^1.0.1",
+    "@tailwindcss/aspect-ratio": "^0.2.0",
+    "@tailwindcss/forms": "^0.3.2",
+    "@tailwindcss/line-clamp": "^0.2.0",
+    "@tailwindcss/postcss7-compat": "^2.1.2",
+    "@tailwindcss/typography": "^0.4",
+    "@vueuse/core": "^7.6.2",
+    "autoprefixer": "^9.8.6",
+    "axios": "^0.21.1",
+    "bn.js": "^5.2.0",
+    "core-js": "^3.6.5",
+    "debounce": "^1.2.1",
+    "nes.css": "^2.3.0",
+    "postcss": "^7.0.35",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.2",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0-0",
+    "vuex": "^4.0.0-0",
+    "web3": "^1.6.0",
+    "web3modal": "^1.9.4"
+  },
+  "devDependencies": {
+    "@types/tailwindcss": "^2.0.2",
+    "@vue/cli": "^4.5.13",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.26.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^7.0.0",
+    "node-sass": "^4.12.0",
+    "prettier": "^2.2.1",
+    "sass-loader": "^8.0.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

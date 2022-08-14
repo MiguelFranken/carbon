@@ -1,0 +1,8 @@
+.idea
+node_modules
+.env
+my-data
+
+# Local Netlify folder
+.netlify
+.DS_Store

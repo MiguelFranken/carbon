@@ -1,0 +1,87 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  labels:
+    app: cryptococks
+spec:
+  ports:
+    - port: 3306
+  selector:
+    app: cryptococks
+    tier: db
+  clusterIP: None
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: db-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/db-store"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: db-pv-claim
+  labels:
+    app: cryptococks
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: db
+  labels:
+    app: cryptococks
+spec:
+  selector:
+    matchLabels:
+      app: cryptococks
+      tier: db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: cryptococks
+        tier: db
+    spec:
+      containers:
+      - image: mariadb:latest
+        name: mariadb
+        env:
+        - name: MYSQL_DATABASE
+          value: "cryptococks"
+        - name: MYSQL_USER
+          value: "cryptococks"
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: cc-secrets
+              key: mysql_password
+        ports:
+        - containerPort: 3306
+          name: db
+        volumeMounts:
+        - name: db-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: db-persistent-storage
+        persistentVolumeClaim:
+          claimName: db-pv-claim
+      imagePullSecrets:
+        - name: regcred

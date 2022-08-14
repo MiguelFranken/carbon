@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: default-tls
+spec:
+  secretName: default-tls-secret
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  privateKey:
+    algorithm: "RSA"
+    size: 4096
+  dnsNames:
+    - api.cryptococks.xyz

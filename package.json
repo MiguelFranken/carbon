@@ -1,0 +1,24 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "lerna": "^4.0.0"
+  },
+  "scripts": {
+    "bootstrap": "npx lerna bootstrap",
+    "dev": "npx lerna run start:dev --parallel",
+    "blockchain": "cd truffle && npm run start",
+    "deploy": "cd truffle && npm run migrate && cd ../api && npm run typings",
+    "deploy:ropsten": "cd truffle && npm run migrate:ropsten && cd ../api && npm run typings",
+    "lint": "eslint \"{api,frontend,truffle, ipfs}/{src,apps,libs,test,scripts}/**/*.{js,ts}\" --fix",
+    "copy": "npm run copy:mainnet",
+    "copy:mainnet": "cp -a mainnet/. frontend/src/contracts && cp -a mainnet/. api/src/contracts",
+    "copy:rinkeby": "cp -a rinkeby/. frontend/src/contracts && cp -a rinkeby/. api/src/contracts",
+    "copy:cocks": "cd ipfs && npm run copy:cocks",
+    "copy:metadata": "cd ipfs && npm run copy:metadata"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}

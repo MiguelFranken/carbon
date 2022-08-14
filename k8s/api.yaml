@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: api
+  labels:
+    app: cryptococks
+    tier: api
+spec:
+  ports:
+  - port: 3001
+  selector:
+    app: cryptococks
+    tier: api
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  labels:
+    app: cryptococks
+    tier: api
+spec: # Replica Set
+  selector:
+    matchLabels:
+      app: cryptococks
+      tier: api
+  strategy:
+    type: Recreate
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cryptococks
+        tier: api
+    spec:
+      containers:
+      - image: "ghcr.io/cocodigrande2021/api:latest" #ghcr.io/cocodigrande2021/api-staging:latest
+        name: api
+
+        imagePullPolicy: Always
+
+        ports:
+        - containerPort: 3001
+          name: api
+
+        env:
+        - name: MYSQL_DATABASE
+          value: "cryptococks"
+        - name: MYSQL_USER
+          value: "root"
+        - name: MYSQL_HOST
+          value: "db"
+        - name: DB_SYNCHRONIZE
+          value: "false"
+        - name: DB_DROP_SCHEMA
+          value: "false"
+        - name: DB_RUN_MIGRATIONS
+          value: "true"
+        - name: REDIS_HOST
+          value: "redis"
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: cc-secrets
+              key: mysql_password
+        - name: WEB3_HTTP_PROVIDER
+          value: "https://eth-mainnet.alchemyapi.io/v2/EtMsj79P-CpoiIqN5dP8_dFxx-CjKSOp"
+        - name: WEB3_WEBSOCKET_PROVIDER
+          value: "wss://eth-mainnet.alchemyapi.io/v2/EtMsj79P-CpoiIqN5dP8_dFxx-CjKSOp"
+      imagePullSecrets:
+      - name: regcred
+

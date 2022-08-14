@@ -1,0 +1,3 @@
+[submodule "cc-contract"]
+	path = cc-contract
+	url = git@github.com:MiguelFranken/carbon-contract.git

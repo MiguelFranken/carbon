@@ -1,0 +1,9 @@
+GET http://localhost:3001/token/inner/inner
+Accept: application/json
+
+###
+
+GET http://localhost:3001/token
+Accept: application/json
+
+###
