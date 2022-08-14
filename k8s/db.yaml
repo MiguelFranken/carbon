@@ -3,12 +3,12 @@ kind: Service
 metadata:
   name: db
   labels:
-    app: cryptococks
+    app: carbon
 spec:
   ports:
     - port: 3306
   selector:
-    app: cryptococks
+    app: carbon
     tier: db
   clusterIP: None
 ---
@@ -32,7 +32,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: db-pv-claim
   labels:
-    app: cryptococks
+    app: carbon
 spec:
   storageClassName: manual
   accessModes:
@@ -46,18 +46,18 @@ kind: Deployment
 metadata:
   name: db
   labels:
-    app: cryptococks
+    app: carbon
 spec:
   selector:
     matchLabels:
-      app: cryptococks
+      app: carbon
       tier: db
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: cryptococks
+        app: carbon
         tier: db
     spec:
       containers:
@@ -65,9 +65,9 @@ spec:
         name: mariadb
         env:
         - name: MYSQL_DATABASE
-          value: "cryptococks"
+          value: "carbon"
         - name: MYSQL_USER
-          value: "cryptococks"
+          value: "carbon"
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:

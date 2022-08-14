@@ -3,14 +3,14 @@ kind: Service
 metadata:
   name: redis
   labels:
-    app: cryptococks
+    app: carbon
     tier: redis
 spec:
   ports:
   - port: 6379
     targetPort: 6379
   selector:
-    app: cryptococks
+    app: carbon
     tier: redis
 ---
 apiVersion: apps/v1 
@@ -18,19 +18,19 @@ kind: Deployment
 metadata:
   name: redis
   labels:
-    app: cryptococks
+    app: carbon
     tier: redis
 spec:
   selector:
     matchLabels:
-      app: cryptococks
+      app: carbon
       tier: redis
   replicas: 1
 
   template:
     metadata:
       labels:
-        app: cryptococks
+        app: carbon
         tier: redis
     spec:
       containers:

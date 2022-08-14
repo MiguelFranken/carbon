@@ -84,6 +84,6 @@ async function store(limit) {
 }
 
 store().then((cids) => {
-  console.log("Uploaded cock images and metadata files");
+  console.log("Uploaded diamond images and metadata files");
   console.log(cids);
 })

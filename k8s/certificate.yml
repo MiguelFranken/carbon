@@ -11,4 +11,4 @@ spec:
     algorithm: "RSA"
     size: 4096
   dnsNames:
-    - api.cryptococks.xyz
+    - api.carbon.xyz

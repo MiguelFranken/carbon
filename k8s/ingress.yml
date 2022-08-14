@@ -8,10 +8,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - api.cryptococks.xyz #staging.api.cryptococks.xyz
+    - api.carbon.xyz #staging.api.carbon.xyz
     secretName: default-tls-secret
   rules:
-  - host: api.cryptococks.xyz #staging.api.cryptococks.xyz
+  - host: api.carbon.xyz #staging.api.carbon.xyz
     http:
       paths:
       - backend:

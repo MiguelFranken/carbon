@@ -3,13 +3,13 @@ kind: Service
 metadata:
   name: api
   labels:
-    app: cryptococks
+    app: carbon
     tier: api
 spec:
   ports:
   - port: 3001
   selector:
-    app: cryptococks
+    app: carbon
     tier: api
 ---
 apiVersion: apps/v1
@@ -17,12 +17,12 @@ kind: Deployment
 metadata:
   name: api
   labels:
-    app: cryptococks
+    app: carbon
     tier: api
 spec: # Replica Set
   selector:
     matchLabels:
-      app: cryptococks
+      app: carbon
       tier: api
   strategy:
     type: Recreate
@@ -30,7 +30,7 @@ spec: # Replica Set
   template:
     metadata:
       labels:
-        app: cryptococks
+        app: carbon
         tier: api
     spec:
       containers:
@@ -45,7 +45,7 @@ spec: # Replica Set
 
         env:
         - name: MYSQL_DATABASE
-          value: "cryptococks"
+          value: "carbon"
         - name: MYSQL_USER
           value: "root"
         - name: MYSQL_HOST
