@@ -1,17 +1,17 @@
 import { Injectable, Logger } from '@nestjs/common';
 import Web3 from 'web3';
-import * as CryptoCocks from '../contracts/abi/CryptoCocks.json';
+import * as Carbon from '../contracts/abi/Carbon.json';
 import * as addresses from '../contracts/addresses.json';
 import { BlockNumber } from 'web3-core';
-import { CryptoCocks as CryptoCocksContract } from '../types/CryptoCocks';
+import { Carbon as CarbonContract } from '../types/Carbon';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class BlockchainService {
   private readonly logger = new Logger(BlockchainService.name);
 
-  private readonly cryptoCocksContract: CryptoCocksContract;
-  private readonly cryptoCocksContractWs: CryptoCocksContract;
+  private readonly carbonContract: CarbonContract;
+  private readonly carbonContractWs: CarbonContract;
 
   private readonly web3: Web3;
 
@@ -26,16 +26,16 @@ export class BlockchainService {
     const web3Ws: Web3 = new Web3(new Web3.providers.WebsocketProvider(wsUri));
     this.web3 = web3Http;
 
-    const cryptoCocksAddress = addresses.CryptoCocks;
-    const cryptoCocksAbi: any = CryptoCocks.abi;
+    const carbonAddress = addresses.Carbon;
+    const carbonAbi: any = Carbon.abi;
 
-    this.cryptoCocksContract = new web3Http.eth.Contract(
-      cryptoCocksAbi,
-      cryptoCocksAddress,
+    this.carbonContract = new web3Http.eth.Contract(
+      carbonAbi,
+      carbonAddress,
     ) as any;
-    this.cryptoCocksContractWs = new web3Ws.eth.Contract(
-      cryptoCocksAbi,
-      cryptoCocksAddress,
+    this.carbonContractWs = new web3Ws.eth.Contract(
+      carbonAbi,
+      carbonAddress,
     ) as any;
 
     // set last block
@@ -51,7 +51,7 @@ export class BlockchainService {
     env.params.from = BlockchainService.getFrom(env);
     return {
       callAccount: env.params.from,
-      callData: await this.cryptoCocksContract.methods[action](...data).call(
+      callData: await this.carbonContract.methods[action](...data).call(
         env.params,
       ),
     };
@@ -63,7 +63,7 @@ export class BlockchainService {
   }
 
   async handleEvent(env, event, callback) {
-    const contract = this.cryptoCocksContractWs;
+    const contract = this.carbonContractWs;
     if (env.params === undefined) {
       env.params = {};
     }
@@ -98,7 +98,7 @@ export class BlockchainService {
       this.logger.debug(
         `Getting past ${event} events from block ${env.params.fromBlock}...`,
       );
-      await this.cryptoCocksContract.getPastEvents(
+      await this.carbonContract.getPastEvents(
         event,
         env.params,
         async (error, events: any) => {

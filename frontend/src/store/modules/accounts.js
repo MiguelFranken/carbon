@@ -78,7 +78,7 @@ const actions = {
       await commit("setActiveAccount", window.ethereum.selectedAddress);
       await commit("setChainData", window.ethereum.chainId);
       await commit("setWeb3Provider", providerW3m);
-      await dispatch("mint/fetchCryptoCocksContract", {}, { root: true });
+      await dispatch("mint/fetchCarbonContract", {}, { root: true });
       await dispatch("fetchAccountData");
     }
 
@@ -156,7 +156,7 @@ const actions = {
     commit("setWhitelistingStatus", true);
     const account = getters.getActiveAccount;
     let status = false;
-    const contract = rootGetters["mint/getCryptoCocksContract"];
+    const contract = rootGetters["mint/getCarbonContract"];
     try {
       const minBalances = [1, 100, 1, 5, 300, 1];
 

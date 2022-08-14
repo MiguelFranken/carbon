@@ -1,32 +1,29 @@
-import CryptoCocks from "../../contracts/abi/CryptoCocks.json";
+import Carbon from "../../contracts/abi/Carbon.json";
 import addresses from "../../contracts/addresses.json";
 
 const state = {
-  cryptoCocksContract: null,
+  carbonContract: null,
 };
 
 const getters = {
-  getCryptoCocksContract(state) {
-    return state.cryptoCocksContract;
+  getCarbonContract(state) {
+    return state.carbonContract;
   },
 };
 
 const actions = {
-  async fetchCryptoCocksContract({ rootState, commit }) {
+  async fetchCarbonContract({ rootState, commit }) {
     const web3 = rootState.accounts.web3;
-    const cryptoCocksContractAddress = addresses.CryptoCocks;
-    const contract = new web3.eth.Contract(
-      CryptoCocks.abi,
-      cryptoCocksContractAddress
-    );
-    await commit("setCryptoCocksContract", contract);
+    const carbonContractAddress = addresses.Carbon;
+    const contract = new web3.eth.Contract(Carbon.abi, carbonContractAddress);
+    await commit("setCarbonContract", contract);
     return contract;
   },
 
   async mint({ state, dispatch, rootGetters }) {
-    let contract = state.cryptoCocksContract;
+    let contract = state.carbonContract;
     if (!contract) {
-      contract = await dispatch("fetchCryptoCocksContract");
+      contract = await dispatch("fetchCarbonContract");
     }
 
     const account = rootGetters["accounts/getActiveAccount"];
@@ -84,9 +81,9 @@ const actions = {
 };
 
 const mutations = {
-  setCryptoCocksContract(state, _contract) {
-    console.log("setCryptoCocksContract", _contract);
-    state.cryptoCocksContract = _contract;
+  setCarbonContract(state, _contract) {
+    console.log("setCarbonContract", _contract);
+    state.carbonContract = _contract;
   },
 };
 
