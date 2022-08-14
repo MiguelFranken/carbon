@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!isLoading && decentiles">
+  <div v-if="!isLoading && decentiles && decentiles.length > 0">
     <div class="pixelated w-full mt-5">
       <table class="mx-0 px-0 w-full">
         <tr>
@@ -34,6 +34,7 @@
 import useDecentiles from "@/modules/decentiles";
 import { mapGetters } from "vuex";
 import { computed, onMounted, ref } from "vue";
+
 const BN = require("bn.js");
 
 export default {
@@ -90,12 +91,14 @@ export default {
       } else {
         decentiles.value = data.reverse().map((decentile, index) => {
           decentile.rank = 10 - index;
+          return decentile;
         });
       }
 
       decentiles.value = decentiles.value.map((decentile, index) => {
         if (index < 9) {
-          const max = decentiles.value[index + 1].max;
+          const value = decentiles.value[index];
+          const max = value.max;
           const maxBn = new BN(max);
           decentile.min = maxBn.add(new BN("100000000000000"));
         }
