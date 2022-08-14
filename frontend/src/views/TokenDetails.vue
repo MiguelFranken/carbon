@@ -54,12 +54,12 @@
           <div class="space-y-2">
             <div class="flex justify-between">
               <span>Size</span>
-              <span>{{ length }}%</span>
+              <span>{{ size }}%</span>
             </div>
             <div class="mr-2">
               <progress
                 class="nes-progress cc-progress crypto-button-border-gray is-rounded pixelated cc-container"
-                :value="length"
+                :value="size"
                 max="100"
               ></progress>
             </div>
@@ -119,11 +119,11 @@ export default {
       return getImageSrc(tokenData.token);
     });
 
-    const length = computed(() => {
+    const size = computed(() => {
       if (traitsData.isLoading) {
         return null;
       }
-      const rawLength = +traitsData.traits.length;
+      const rawLength = +traitsData.traits.size;
       return Math.min(10, rawLength) * 10;
     });
 
@@ -135,7 +135,7 @@ export default {
       tokenData,
       capitalizeFirstLetter,
       traitsData,
-      length,
+      size,
       tokenId,
       imgSrc,
       ipfsMetadataHttp,

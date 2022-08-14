@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Trait } from './trait.entity';
 import { Repository } from 'typeorm';
-import { Length, TokenId } from '../token/token.entity';
+import { Size, TokenId } from '../token/token.entity';
 import fs from 'fs';
 import { join } from 'path';
 
@@ -50,23 +50,23 @@ export class TraitsService {
     return obj;
   }
 
-  async findOrCreateForToken(tokenId: TokenId, length: Length): Promise<Trait> {
+  async findOrCreateForToken(tokenId: TokenId, size: Size): Promise<Trait> {
     const trait: Trait | undefined = await this.traitRepository
       .createQueryBuilder('trait')
       .leftJoinAndSelect('trait.token', 'token') // TODO MF: Optimize join
       .where('token.id = :id', { id: tokenId })
       .getOne();
     if (trait === undefined) {
-      return await this.createForToken(tokenId, length);
+      return await this.createForToken(tokenId, size);
     } else {
       return trait;
     }
   }
 
-  async createForToken(tokenId: TokenId, length: Length) {
+  async createForToken(tokenId: TokenId, size: Size) {
     const path = join(
       process.cwd(),
-      `/metadata/${length}/${tokenId}/metadata.json`,
+      `/metadata/${size}/${tokenId}/metadata.json`,
     );
 
     return new Promise<Trait>((resolve, reject) => {

@@ -4,47 +4,57 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 import dotenv from 'dotenv';
 dotenv.config();
-const directoryPath = process.env.DATA_DIRECTORY_PATH || "../cc-images/data";
 const deleteFolder = process.env.DELETE_FOLDERS || false;
 const metadataPath = path.join(__dirname, "../api/metadata");
 const limitFiles = process.env.LIMIT_FILES;
 
+function generateMetaData(tokenId, ipfs, size, externalUrl) {
+  return {
+    "image": `ipfs://${ipfs}/${size}.png`,
+    "tokenId": tokenId,
+    "name": `Diamond ${size}`,
+    "external_url": externalUrl,
+    "attributes": [
+      {
+        "trait_type": "size",
+        "value": size,
+        "max_value": 10
+      }
+    ]
+  };
+}
+
 function copyMetaDataFilesToAPI(limit) {
   console.log("Copying metadata to API folder..");
   let count = 0;
+
   try {
     if (deleteFolder) {
       fs.rmdirSync(metadataPath, { recursive: true });
     }
     fs.mkdirSync(metadataPath);
 
-    const lengthFolders = fs
-      .readdirSync(directoryPath)
-      .filter((folder) => folder !== ".DS_Store");
-
-    lengthFolders.forEach((length) => {
-      const lengthFolderPath = path.join(metadataPath, length);
+    for (let size = 1; size <= 11; size++) {
+      const lengthFolderPath = path.join(metadataPath, size.toString());
       fs.mkdirSync(lengthFolderPath);
-      const cockFolders = fs
-        .readdirSync(path.join(directoryPath, length))
-        .filter((folder) => folder !== ".DS_Store");
-      cockFolders.forEach((cockIndex) => {
-        if (!limit || parseInt(cockIndex) <= limit) {
-          const cockFolderPath = path.join(lengthFolderPath, cockIndex);
-          fs.mkdirSync(cockFolderPath);
-          fs.copyFileSync(
-            path.join(directoryPath, length, cockIndex, "metadata.json"),
-            path.join(cockFolderPath, "metadata.json")
-          );
-          count++;
-        }
-      });
-    });
+
+      const tokenIdLimit = limit ? limit : 10000;
+
+      for (let tokenId = 1; tokenId <= tokenIdLimit; tokenId++) {
+        const metadata = generateMetaData(tokenId, "", size, "");
+
+        const diamondFolderPath = path.join(lengthFolderPath, tokenId.toString());
+        fs.mkdirSync(diamondFolderPath);
+        fs.writeFileSync(path.join(diamondFolderPath, "metadata.json"), JSON.stringify(metadata));
+        count++;
+      }
+    }
   } catch (err) {
     console.error(`Error while deleting ${metadataPath}.`);
     console.error(err);
     return Promise.reject(err);
   }
+
   return Promise.resolve(count);
 }
 

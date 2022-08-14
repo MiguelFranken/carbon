@@ -62,7 +62,7 @@ export default {
   computed: {
     src() {
       return getImageSrc({
-        length: this.savedSize,
+        size: this.savedSize,
         id: this.currentDiamond,
       });
     },

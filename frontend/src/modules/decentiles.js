@@ -24,7 +24,7 @@ export default function useDecentiles() {
     }
   }
 
-  async function fetchCountPerLength() {
+  async function fetchCountPerSize() {
     try {
       const response = await http.get(`/token/counts`);
       state.counts = response.data;
@@ -35,7 +35,7 @@ export default function useDecentiles() {
 
   return {
     getDecentiles,
-    fetchCountPerLength,
+    fetchCountPerSize,
     isLoading: computed(() => state.isLoading),
     counts: computed(() => state.counts),
   };

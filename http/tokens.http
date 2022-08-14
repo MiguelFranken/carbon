@@ -3,16 +3,11 @@ Accept: application/json
 
 ###
 
-GET http://localhost:3001/token?background=Blau
-Accept: application/json
-
-###
-
 GET http://localhost:3001/token?size=100&limit=1
 Accept: application/json
 
 ###
 
-GET http://localhost:3001/token?size=100&page=2&limit=1
+GET http://localhost:3001/token?size=10&page=1&limit=1
 Accept: application/json
 

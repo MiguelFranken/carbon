@@ -142,13 +142,13 @@ export class EventConsumer {
     return new Promise<void>(async (resolve, reject) => {
       const eventInfo = job.data;
 
-      let length, tokenId: TokenId;
+      let size, tokenId: TokenId;
 
       try {
         const decodedValue = eventInfo._value
           .substring(0, eventInfo._value.length - 5)
           .split('_');
-        length = decodedValue[0];
+        size = decodedValue[0];
         tokenId = decodedValue[1];
       } catch (e) {
         this.logger.error(`Cannot decode event data`);
@@ -169,14 +169,11 @@ export class EventConsumer {
         id: tokenId,
         blockNumber: eventInfo.blockNumber,
         balance: '0', // is replaced when balance event is read
-        length,
+        size,
       };
 
       try {
-        tokenData.trait = await this.traitService.createForToken(
-          tokenId,
-          length,
-        );
+        tokenData.trait = await this.traitService.createForToken(tokenId, size);
       } catch (e) {
         this.logger.error(
           `Cannot store trait attributes for token with id ${tokenId}`,

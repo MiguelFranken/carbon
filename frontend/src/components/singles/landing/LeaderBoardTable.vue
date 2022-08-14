@@ -3,7 +3,7 @@
     <div class="pixelated w-full mt-5">
       <table class="mx-0 px-0 w-full">
         <tr>
-          <th>Length</th>
+          <th>Size</th>
           <th class="pl-4">Balance</th>
           <th class="pl-4">No. NFTs</th>
         </tr>
@@ -55,18 +55,18 @@ export default {
   setup() {
     const {
       getDecentiles,
-      fetchCountPerLength,
+      fetchCountPerSize,
       counts,
       isLoading,
     } = useDecentiles();
     const decentiles = ref([]);
-    fetchCountPerLength();
+    fetchCountPerSize();
 
     const computedCounts = computed(() => {
       let values = {};
       if (counts.value) {
         for (let i = 1; i <= 11; i++) {
-          const count = counts.value.find((count) => count.length === i);
+          const count = counts.value.find((count) => count.size === i);
           if (count) {
             if (i === 11) {
               values[10] =

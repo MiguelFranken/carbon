@@ -9,7 +9,7 @@ import { Token } from '../token/token.entity';
 
 export interface ITrait {
   id: number;
-  length: string;
+  size: string;
   top: boolean;
 }
 
@@ -29,7 +29,7 @@ export class Trait extends BaseEntity implements ITrait {
   // TODO MF: Add more traits here
 
   @Column({ nullable: true })
-  length: string;
+  size: string;
 
   @Column({ nullable: true })
   top: boolean;

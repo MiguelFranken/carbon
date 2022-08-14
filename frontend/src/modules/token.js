@@ -28,7 +28,7 @@ export default function useToken() {
   }
 
   function getImageSrc(token) {
-    return `/diamonds/${token.length}.png`;
+    return `/diamonds/${token.size}.png`;
   }
 
   const imageIdentifiers = [
@@ -82,7 +82,7 @@ export default function useToken() {
     }
 
     return state.token
-      ? `https://ipfs.io/ipfs/${cid}/${state.token.length}_${state.token.id}.json`
+      ? `https://ipfs.io/ipfs/${cid}/${state.token.size}_${state.token.id}.json`
       : null;
   });
 
@@ -91,8 +91,8 @@ export default function useToken() {
       return null;
     }
     return state.token
-      ? `https://ipfs.io/ipfs/${imageIdentifiers[+state.token.length - 1]}/${
-          state.token.length
+      ? `https://ipfs.io/ipfs/${imageIdentifiers[+state.token.size - 1]}/${
+          state.token.size
         }_${state.token.id}.svg`
       : null;
   });

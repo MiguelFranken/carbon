@@ -40,7 +40,7 @@ export default {
 
   methods: {
     getDiamondSize(token) {
-      if (token.length === 11) {
+      if (token.size === 11) {
         return "100";
       }
       return +length * 10;

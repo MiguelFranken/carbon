@@ -61,19 +61,7 @@ export default {
       performFilter(filterKey, filterValue);
     };
 
-    const groups = [
-      "length",
-      "colors",
-      "condom",
-      "glans",
-      "pubic_hair",
-      "ballsack",
-      "jizz",
-      "specials",
-      "vein",
-      "penis_ring",
-      "top",
-    ];
+    const groups = ["length", "top"];
 
     return {
       filterableTraits,

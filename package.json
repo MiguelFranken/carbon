@@ -15,7 +15,6 @@
     "copy": "npm run copy:mainnet",
     "copy:mainnet": "cp -a mainnet/. frontend/src/contracts && cp -a mainnet/. api/src/contracts",
     "copy:rinkeby": "cp -a rinkeby/. frontend/src/contracts && cp -a rinkeby/. api/src/contracts",
-    "copy:cocks": "cd ipfs && npm run copy:cocks",
     "copy:metadata": "cd ipfs && npm run copy:metadata"
   },
   "dependencies": {

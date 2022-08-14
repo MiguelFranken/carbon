@@ -11,8 +11,8 @@
             <div class="relative overflow-hidden" style="height: 35vh">
               <img
                 class="absolute inset-0 object-cover rounded-md opacity-90"
-                src="/dia.svg"
-                alt="How it works"
+                src="/diamonds/10.png"
+                alt="Largest diamond"
               />
             </div>
           </div>
@@ -34,7 +34,7 @@
                 There are
                 <span class="highlighted">10 different diamond sizes</span> and
                 <span class="highlighted">
-                  the length of yours depends on your ETH balance on your
+                  the size of yours depends on your ETH balance on your
                   connected MetaMask wallet</span
                 >
                 at the time you mint your diamond.

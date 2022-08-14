@@ -39,8 +39,8 @@ export class TokenController {
   }
 
   @Get('counts')
-  getCountPerLength() {
-    return this.tokenService.getCountPerLength();
+  getCountPerSize() {
+    return this.tokenService.getCountPerSize();
   }
 
   @Get(':id')

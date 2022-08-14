@@ -13,9 +13,7 @@
   },
   "scripts": {
     "upload": "node index.js",
-    "copy:full": "npm run copy:metadata && npm run copy:cocks",
     "copy:metadata": "node copy-metadata.js",
-    "copy:cocks": "node copy-images.js",
     "status": "node status.js",
     "upload:images": "node upload-images-batch.js",
     "upload:metadata": "node upload-metadata.js"

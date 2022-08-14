@@ -1,6 +1,6 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { IToken, Length, Token } from '../../../token/token.entity';
+import { IToken, Size, Token } from '../../../token/token.entity';
 import { Repository } from 'typeorm';
 import faker from 'faker';
 import { TraitsService } from '../../../traits/traits.service';
@@ -21,17 +21,17 @@ export class TokenSeederService {
       .fill(1)
       .map((item, i) => {
         const tokenId = i + 1;
-        const rawLength = Math.min(
+        const rawSize = Math.min(
           faker.datatype.number({
             min: 1,
             max: 15,
           }),
           10,
         );
-        const length = Math.ceil(rawLength) as Length;
+        const size = Math.ceil(rawSize) as Size;
         return {
           id: tokenId,
-          length,
+          size: size,
           balance: faker.datatype
             .number({
               min: 20000000000000000,
@@ -62,7 +62,7 @@ export class TokenSeederService {
           try {
             const trait = await this.traitsService.findOrCreateForToken(
               token.id,
-              token.length as Length,
+              token.size as Size,
             );
             return Promise.resolve(
               await this.tokenRepository.save(
@@ -74,7 +74,7 @@ export class TokenSeederService {
             );
           } catch (e) {
             this.logger.error(
-              `Cannot create traits entry for token (${token.id}, ${token.length})`,
+              `Cannot create traits entry for token (${token.id}, ${token.size})`,
             );
             return Promise.reject(e);
           }

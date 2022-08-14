@@ -27,11 +27,11 @@ export class TokenService {
     return this.tokenRepository.count();
   }
 
-  public getCountPerLength() {
+  public getCountPerSize() {
     const queryBuilder = this.tokenRepository.createQueryBuilder('token');
-    queryBuilder.groupBy('length');
-    queryBuilder.select('length');
-    queryBuilder.addSelect('COUNT(length)', 'count');
+    queryBuilder.groupBy('size');
+    queryBuilder.select('size');
+    queryBuilder.addSelect('COUNT(size)', 'count');
     return queryBuilder.getRawMany();
   }
 

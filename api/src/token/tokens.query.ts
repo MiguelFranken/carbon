@@ -41,5 +41,5 @@ export class GetTokensQuery {
   @IsIn([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], { each: true })
   @Transform(({ value }) => `${value}`.split(',').map((str) => parseInt(str)))
   @IsOptional()
-  length?: number[];
+  size?: number[];
 }
