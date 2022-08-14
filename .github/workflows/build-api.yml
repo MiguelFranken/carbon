@@ -18,7 +18,7 @@ jobs:
           token: ${{ secrets.PAT }}
       - name: "Install IPFS dependencies"
         run: cd ipfs && npm ci
-      - name: "Copy images and metadata"
+      - name: "Copy metadata"
         run: npm run copy:metadata
       - name: "Copy contracts"
         run: npm run copy
@@ -29,14 +29,14 @@ jobs:
         with:
           path: api/
           registry: ghcr.io
-          username: "cocodigrande2021"
+          username: "miguelfranken"
           password: ${{ secrets.PAT }}
-          repository: cocodigrande2021/api
+          repository: miguelfranken/api
           tags: latest
-      - name: "Ship latest image to cluster"
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.PROD_SERVER_HOST }}
-          username: ${{ secrets.PROD_SERVER_USERNAME }}
-          password: ${{ secrets.PROD_SERVER_PASSWORD }}
-          script: microk8s kubectl delete pod -l tier=api
+#      - name: "Ship latest image to cluster"
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.PROD_SERVER_HOST }}
+#          username: ${{ secrets.PROD_SERVER_USERNAME }}
+#          password: ${{ secrets.PROD_SERVER_PASSWORD }}
+#          script: microk8s kubectl delete pod -l tier=api
