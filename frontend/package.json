@@ -1,13 +1,14 @@
 {
-  "name": "Carbon",
+  "name": "carbon",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "start:dev": "npx --max_old_space_size=4096 vue-cli-service serve",
     "start:prod": "npx vue-cli-service serve --mode production",
-    "build": "npx vue-cli-service build",
+    "build": "npm run copy:rinkeby && npx vue-cli-service build",
     "lint": "npx vue-cli-service lint",
-    "lint:fix": "npx vue-cli-service lint --fix"
+    "lint:fix": "npx vue-cli-service lint --fix",
+    "copy:rinkeby": "cp -a ../rinkeby/. src/contracts"
   },
   "dependencies": {
     "@chenfengyuan/vue-countdown": "^2.0.0-rc",
