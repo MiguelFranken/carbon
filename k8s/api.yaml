@@ -34,7 +34,7 @@ spec: # Replica Set
         tier: api
     spec:
       containers:
-      - image: "ghcr.io/cocodigrande2021/api:latest" #ghcr.io/cocodigrande2021/api-staging:latest
+      - image: "ghcr.io/miguelfranken/api:latest"
         name: api
 
         imagePullPolicy: Always
@@ -64,9 +64,9 @@ spec: # Replica Set
               name: cc-secrets
               key: mysql_password
         - name: WEB3_HTTP_PROVIDER
-          value: "https://eth-mainnet.alchemyapi.io/v2/EtMsj79P-CpoiIqN5dP8_dFxx-CjKSOp"
+          value: "https://eth-rinkeby.alchemyapi.io/v2/sDeDg2TWYRnj4LDTWuh6ekr6PlJrQvxp"
         - name: WEB3_WEBSOCKET_PROVIDER
-          value: "wss://eth-mainnet.alchemyapi.io/v2/EtMsj79P-CpoiIqN5dP8_dFxx-CjKSOp"
+          value: "wss://eth-rinkeby.alchemyapi.io/v2/sDeDg2TWYRnj4LDTWuh6ekr6PlJrQvxp"
       imagePullSecrets:
       - name: regcred
 

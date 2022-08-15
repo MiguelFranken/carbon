@@ -1,2 +1,7 @@
+GET http://api.miguel-franken.com/token/decentiles
+Accept: application/json
+
+###
 GET http://localhost:3001/token/decentiles
 Accept: application/json
+
