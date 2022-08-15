@@ -24,6 +24,13 @@ sudo snap install microk8s --classic --channel=1.24
 microk8s status --wait-ready
 ```
 
+Enable Addons:
+```
+# from the server
+microk8s.enable dns
+microk8s.enable ingress
+```
+
 ## Get remote access
 
 ```
@@ -61,7 +68,7 @@ echo -n <your-github-username>:<PAT> | base64
 <BASE_64_ENCODED_PAT>
 ```
 
-Insert `<BASE_64_ENCODED_PAT>` into regcred.yml
+Insert `<BASE_64_ENCODED_PAT>` into `regcred.yml` and apply manifest by `kubectl apply -f regcred.yml`
 
 ## Apply manifests (api, db, redis)
 ```
@@ -87,7 +94,8 @@ kubectl get pods --namespace cert-manager
 # An Issuer is a custom resource which tells cert-manager how to sign a Certificate.
 # Let's Encrypt uses the Automatic Certificate Management Environment (ACME) protocol which is why the configuration below is under a key called `acme`.
 # The email address is only used by Let's Encrypt to remind you to renew the certificate after 30 days before expiry. You will only receive this email if something goes wrong when renewing the certificate with cert-manager.
-kubectl apply -f clusterissuer.yaml
+kubectl apply -f certificate.yml
+kubectl apply -f issuer.yaml
 
 # You can check the status of the issuer
 kubectl describe issuers.cert-manager.io letsencrypt-prod
@@ -97,20 +105,13 @@ kubectl describe issuers.cert-manager.io letsencrypt-prod
 
 The API is running at this point already inside the Kubernetes cluster but there is no route or proxy through which Internet clients can connect to it, yet! So you won't be able to reach the API yet. Now we will create a Kubernetes Ingress object and this will trigger the creation of a various services which together allow Internet clients to reach the API running inside the Kubernetes cluster.
 
-Enable Ingress Addon:
-```
-# from the server
-microk8s.enable dns
-microk8s.enable ingress
-```
-
 ```
 kubectl apply -f ingress.yml
 ```
 
 ## Test Deployment
 ```
-curl -v https://carbon-api.miguel-franken.com/token/count
+curl -v https://api.miguel-franken.com/token/count
 ```
 
 ---
@@ -128,7 +129,7 @@ curl -v https://carbon-api.miguel-franken.com/token/count
 2. `microk8s exec -it <pod-name> -- bash`
 
 # Restart API
-`microk8s kubectl delete pod -l tier=api`
+`kubectl delete pod -l tier=api`
 
 # Further Material
 

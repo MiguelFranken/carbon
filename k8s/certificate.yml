@@ -1,14 +1,8 @@
-apiVersion: cert-manager.io/v1
-kind: Certificate
+apiVersion: v1
+kind: Secret
 metadata:
-  name: default-tls
-spec:
-  secretName: default-tls-secret
-  issuerRef:
-    name: letsencrypt
-    kind: ClusterIssuer
-  privateKey:
-    algorithm: "RSA"
-    size: 4096
-  dnsNames:
-    - api.miguel-franken.com
+  name: ssl-web
+type: kubernetes.io/tls
+stringData:
+  tls.key: ""
+  tls.crt: ""
