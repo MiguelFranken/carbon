@@ -5,4 +5,4 @@ metadata:
   name: regcred
   namespace: default
 stringData:
-  .dockerconfigjson: '{"auths":{"ghcr.io":{"auth":"<base_64_encoded_github_pat>"}}}'
+  .dockerconfigjson: '{"auths":{"ghcr.io":{"auth":"<BASE_64_ENCODED_PAT>"}}}'
