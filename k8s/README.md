@@ -53,22 +53,23 @@ microk8s.enable ingress
 ```
 
 7. Certificate
-We use the Kubernetes certificate management controller (cert-manager) in our cluster to generate and manage TLS certificates that are required for internal communication.
+We use [cert-manager](https://cert-manager.io/) in our cluster to generate and manage signed SSL certificates from [Let's Encrypt](https://letsencrypt.org/getting-started/), using an [HTTP-01 challenge](https://letsencrypt.org/docs/challenge-types/#http-01-challenge).
+
+We need to do is install [cert-manager](https://cert-manager.io/), and we'll install it the easy using [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
+This will create three Deployments, and a bunch of Services and Pods in a new namespace called `cert-manager`.
 
 ```
-# Create a new namespace for the cert-manager
-kubectl create namespace cert-manager
-
 # Install cert-manager resources from official YAML manifest file on GitHub
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
 
 # To verify the installation, run the following command
 kubectl get pods --namespace cert-manager
 
+# An Issuer is a custom resource which tells cert-manager how to sign a Certificate.
+# Let's Encrypt uses the Automatic Certificate Management Environment (ACME) protocol which is why the configuration below is under a key called `acme`.
+# The email address is only used by Let's Encrypt to remind you to renew the certificate after 30 days before expiry. You will only receive this email if something goes wrong when renewing the certificate with cert-manager.
 kubectl apply -f clusterissuer.yaml
-```
 
-```
 # You can check the status of the issuer
 kubectl describe issuers.cert-manager.io letsencrypt-prod
 ```
