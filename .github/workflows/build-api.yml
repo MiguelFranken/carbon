@@ -33,10 +33,10 @@ jobs:
           password: ${{ secrets.PAT }}
           repository: miguelfranken/api
           tags: latest
-#      - name: "Ship latest image to cluster"
-#        uses: appleboy/ssh-action@master
-#        with:
-#          host: ${{ secrets.PROD_SERVER_HOST }}
-#          username: ${{ secrets.PROD_SERVER_USERNAME }}
-#          password: ${{ secrets.PROD_SERVER_PASSWORD }}
-#          script: microk8s kubectl delete pod -l tier=api
+      - name: "Ship latest image to cluster"
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.PROD_SERVER_HOST }}
+          username: ${{ secrets.PROD_SERVER_USERNAME }}
+          password: ${{ secrets.PROD_SERVER_PASSWORD }}
+          script: microk8s kubectl delete pod -l tier=api
